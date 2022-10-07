@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Retro";
+  src: url(../../extras/Retro\ Gaming.ttf);
+}
+
+a {
+  font-family: "Retro";
+  font-size: 15px;
+  margin: 0;
+  /* padding: 3px; */
+  align-items: center;
+  /* color: antiquewhite; */
+}
+
+.background {
+  display: grid;
+  grid-template-columns: 110px 130px;
+  background: url(https://thumbs.dreamstime.com/b/fondo-gris-del-camuflaje-pixel-113945150.jpg);
+  background-size: contain;
+  background-repeat: inherit;
+  padding: 0;
+  margin: 0;
+  height: 110px;
+  width: 240px;
+  border-radius: 10px;
+}
+
+.min {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 7px;
+}
+
+.image {
+  height: 96px;
+  width: 96px;
+}
+
+.info {
+  align-items: center;
+  display: grid;
+  padding: 0;
+  margin-top: 5px;
+  margin-bottom: 6px;
+}

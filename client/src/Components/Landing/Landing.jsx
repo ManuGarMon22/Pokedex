@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 function Landing() {
   const num = Math.floor(Math.random() * 6);
   const imgBack = () => {
-    console.log(num);
     switch (num) {
       case 0:
         return style.backgroundImg0;
@@ -23,7 +22,6 @@ function Landing() {
   };
 
   const text = () => {
-    console.log(num);
     if (num > 2) {
       return style.textBtn2;
     } else {
