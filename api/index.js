@@ -17,12 +17,28 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const server = require("./src/app.js");
+const { conn } = require("./src/db.js");
+const AddToDB = require("./src/controllers/AddTypesDB.js");
+const { Type } = require("./src/db.js");
+const {
+  getPokemonsApi,
+  getPokemonsDB,
+} = require("./src/controllers/GetPokemons.js");
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+conn
+  .sync({ force: false })
+  .then(async () => {
+    const tipos = await Type.findAll();
+    if (!tipos.length) {
+      AddToDB();
+    }
+    getPokemonsApi();
+    getPokemonsDB();
+  })
+  .then(() => {
+    server.listen(3001, () => {
+      console.log("%s listening at 3001"); // eslint-disable-line no-console
+    });
   });
-});
