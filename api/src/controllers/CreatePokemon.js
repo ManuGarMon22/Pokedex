@@ -1,9 +1,9 @@
 const data = require("../utils.js");
-const { Pokemon, Type, Types_pokemons } = require("../db");
-var id = 40;
+const { Pokemon, Types_pokemons } = require("../db");
+const { getAll } = require("./GetPokemons.js");
 
 const createPokemon = async (info) => {
-  id++;
+  const id = (await (await getAll()).length) + 1;
   const poke = await Pokemon.create({
     id: id,
     name: info.name,

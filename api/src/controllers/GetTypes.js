@@ -7,12 +7,19 @@ const getTypes = async () => {
   return ty;
 };
 
-const getTypesDB = async () => {
-  const tipos = await Type.findAll();
-  let archivo = tipos.map((e) => e.toJSON());
-  archivo.map((e) => data.types.push(e));
-
-  return data.types;
+const getByNameType = async (datos, nameType) => {
+  const listado = datos.filter((e) => utilidad(e, nameType));
+  return listado;
 };
 
-module.exports = { getTypes };
+const utilidad = (e, nameType) => {
+  let coincidencia = false;
+  e.types.forEach((element) => {
+    if (element === nameType) {
+      coincidencia = true;
+    }
+  });
+  return coincidencia;
+};
+
+module.exports = { getTypes, getByNameType };

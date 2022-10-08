@@ -22,7 +22,7 @@ const AddTypesToDB = async () => {
 
 const getPokemonsApi = async () => {
   //funcional
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 20; i++) {
     await axios
       .get(`https://pokeapi.co/api/v2/pokemon/${i}`)
       .then((doc) => doc.data)
@@ -52,7 +52,6 @@ const getPokemonsApi = async () => {
 
 const getPokemonsDB = async () => {
   const p = await Pokemon.findAll({ include: [Type] });
-  console.log(p);
   let archivoJson = p.map((e) => e.toJSON());
   let s = archivoJson.map((p) => {
     data.pokemonsLocal.push({

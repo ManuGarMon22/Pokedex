@@ -7,11 +7,10 @@ const {
   getPokemonsApi,
 } = require("./src/controllers/GetDB.js");
 const { Type } = require("./src/db.js");
-const data = require("./src/utils");
 
 // Syncing all the models at once.
 conn
-  .sync({ force: false })
+  .sync({ force: true })
   .then(async () => {
     const tipos = await Type.findAll();
     if (!tipos.length) {

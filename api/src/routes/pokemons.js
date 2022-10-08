@@ -6,11 +6,17 @@ const createPo = require("../controllers/CreatePokemon");
 const pokemons = Router();
 
 pokemons.get("/", async (req, res) => {
-  // console.log(req.query);
-  if (req.query.order) {
+  const { order, type, local, descent } = req.body;
+
+  if (order || type || local || descent) {
     try {
-      const all = await getsPokemons.getAllSort(req.query.order);
-      res.status(200).send(all);
+      var filt = await getsPokemons.getFiltered({
+        order,
+        type,
+        local,
+        descent,
+      });
+      res.status(200).send(filt);
     } catch (error) {
       res.status(400).send("query not valid");
     }
@@ -42,10 +48,7 @@ pokemons.get("/:id", async (req, res) => {
 });
 
 pokemons.post("/", async (req, res) => {
-  // const y = { name: "manuel", life: 13, type: [2] };
-  // const x = { name: "andres", life: 22, type: [1, 4] };
   const { name } = req.body;
-
   try {
     if (!name) {
       throw new Error("Un pokemon necesita de nombre para poder ser creado");
@@ -60,5 +63,13 @@ pokemons.post("/", async (req, res) => {
     res.status(400).send({ msg: error.message });
   }
 });
+
+// pokemons.get("/order", async (req, res) => {
+
+//     res.status(200).send(all);
+//   } catch (error) {
+//     res.status(400).send({ msg: error.message });
+//   }
+// });
 
 module.exports = pokemons;
