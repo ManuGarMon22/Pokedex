@@ -6,6 +6,7 @@ const createPo = require("../controllers/CreatePokemon");
 const pokemons = Router();
 
 pokemons.get("/", async (req, res) => {
+  // console.log(req.query);
   if (req.query.order) {
     try {
       const all = await getsPokemons.getAllSort(req.query.order);
@@ -22,10 +23,10 @@ pokemons.get("/", async (req, res) => {
     }
   } else {
     try {
-      const all = getsPokemons.getAll();
+      const all = await getsPokemons.getAll();
       res.status(200).send(all);
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).send({ msg: error.message });
     }
   }
 });
@@ -34,24 +35,29 @@ pokemons.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     let r = await getsPokemons.getByID(id);
-    console.log("si llego aca");
     res.status(200).send(r);
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send({ msg: error.message });
   }
 });
 
 pokemons.post("/", async (req, res) => {
-  const y = { name: "manuel", life: 13, type: [2] };
-  const x = { name: "andres", life: 22, type: [1, 4] };
-  const data = req.body;
+  // const y = { name: "manuel", life: 13, type: [2] };
+  // const x = { name: "andres", life: 22, type: [1, 4] };
+  const { name } = req.body;
 
   try {
-    const r = await createPo.createPokemon(x);
-    const s = await createPo.createPokemon(y);
-    res.status(200).send(s);
+    if (!name) {
+      throw new Error("Un pokemon necesita de nombre para poder ser creado");
+    } else {
+      const r = await createPo.createPokemon(req.body);
+      res.status(200).send({
+        msg: "pokemon creado con exito",
+        ...r,
+      });
+    }
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send({ msg: error.message });
   }
 });
 

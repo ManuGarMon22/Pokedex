@@ -1,6 +1,5 @@
 const data = require("../utils");
-const { Pokemon, Type, TypesPokemons } = require("../db");
-const { INTEGER } = require("sequelize");
+const { Pokemon, Type } = require("../db");
 const axios = require("axios").default;
 
 const getPokemonsApi = () => {
@@ -59,9 +58,9 @@ const getAll = async () => {
   return all;
 };
 
-const getAllSort = (attri) => {
+const getAllSort = async (attri) => {
   //funciona
-  let all = getAll();
+  let all = await getAll();
   let sorted = all.sort((a, b) => compareFn(a, b, attri));
   return sorted;
 };
@@ -99,7 +98,6 @@ const getByNameApi = async (name) => {
           image: p.sprites.front_default ? p.sprites.front_default : null,
           db: false,
         };
-        console.log(poke);
         return poke;
       })
       .catch((e) => {});
@@ -133,8 +131,8 @@ const getByID = async (id) => {
 };
 
 module.exports = {
-  getPokemonsApi,
-  getPokemonsDB,
+  // getPokemonsApi,
+  // getPokemonsDB,
   getAll,
   getAllSort,
   getByName,

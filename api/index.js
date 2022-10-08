@@ -1,30 +1,13 @@
-//                       _oo0oo_
-//                      o8888888o
-//                      88" . "88
-//                      (| -_- |)
-//                      0\  =  /0
-//                    ___/`---'\___
-//                  .' \\|     |// '.
-//                 / \\|||  :  |||// \
-//                / _||||| -:- |||||- \
-//               |   | \\\  -  /// |   |
-//               | \_|  ''\---/''  |_/ |
-//               \  .-\__  '-'  ___/-. /
-//             ___'. .'  /--.--\  `. .'___
-//          ."" '<  `.___\_<|>_/___.' >' "".
-//         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
-//         \  \ `_.   \_ __\ /__ _/   .-` /  /
-//     =====`-.____`.___ \_____/___.-`___.-'=====
-//                       `=---='
-//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
-const AddToDB = require("./src/controllers/AddTypesDB.js");
-const { Type } = require("./src/db.js");
 const {
-  getPokemonsApi,
+  AddTypesToDB,
   getPokemonsDB,
-} = require("./src/controllers/GetPokemons.js");
+  getTypesDB,
+  getPokemonsApi,
+} = require("./src/controllers/GetDB.js");
+const { Type } = require("./src/db.js");
+const data = require("./src/utils");
 
 // Syncing all the models at once.
 conn
@@ -32,11 +15,16 @@ conn
   .then(async () => {
     const tipos = await Type.findAll();
     if (!tipos.length) {
-      AddToDB();
+      const r = await AddTypesToDB();
+      if (r === "done") {
+        var m = await getTypesDB();
+      }
     }
-    getPokemonsApi();
-    getPokemonsDB();
+    const x = await getTypesDB();
+    const y = await getPokemonsApi();
+    const z = await getPokemonsDB();
   })
+  .then(async (r) => {})
   .then(() => {
     server.listen(3001, () => {
       console.log("%s listening at 3001"); // eslint-disable-line no-console
