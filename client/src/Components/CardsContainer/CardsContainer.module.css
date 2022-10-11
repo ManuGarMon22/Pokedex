@@ -1,10 +1,17 @@
+@font-face {
+  font-family: "Retro";
+  src: url(../../extras/Retro\ Gaming.ttf);
+}
+
 .background {
-  background-color: black;
+  background: linear-gradient(0deg, rgb(78, 78, 78), white);
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   padding: 0;
   margin: 0;
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  min-height: 100%;
+  font-family: "Retro";
 }

@@ -18,7 +18,7 @@ https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/64c9ea21-82be-48a3-a6f
 */
 .background {
   display: grid;
-  grid-template-rows: 75% 25%;
+  grid-template-rows: 65% 45%;
   justify-content: center;
   margin: 0;
   padding: 0;
@@ -34,10 +34,7 @@ https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/64c9ea21-82be-48a3-a6f
   background: url(https://res.cloudinary.com/practicaldev/image/fetch/s--SH83m96m--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_880/https://i.pinimg.com/originals/b4/6c/d0/b46cd069a1837a0a881fe9b45bae456f.gif);
   background-size: 100%;
 }
-.backgroundImg4 {
-  background: url(https://i.pinimg.com/originals/c1/b3/16/c1b31611e66b7c211bfd0296dd454bfb.gif);
-  background-size: 100%;
-}
+
 .backgroundImg3 {
   background: url(https://i.pinimg.com/originals/c0/e6/d8/c0e6d8e210ca582568b4656625e71749.gif);
   background-size: 100%;
@@ -46,7 +43,7 @@ https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/64c9ea21-82be-48a3-a6f
   background: url(https://4.bp.blogspot.com/-7mcdGoDKAew/XD_A96jNVGI/AAAAAAAASxg/Dn6s6tqO_lI9Aw7f1B_izffzOEj8GrmoQCLcBGAs/s1600/Paisaje%2BPixel%2BArt.png);
   background-size: 100%;
 }
-.backgroundImg5 {
+.backgroundImg4 {
   background: url(https://d1t35hkz8sx2bl.cloudfront.net/api/file/vee6cZvTQIGEHRreeWo7/convert?w=1024&h=1024&fit=max&cache=true);
   background-size: 100%;
 }
@@ -54,8 +51,8 @@ https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/64c9ea21-82be-48a3-a6f
 .logo {
   padding: 0;
   margin: 0;
-  width: 640px;
-  height: 480px;
+  width: 620px;
+  height: 460px;
 }
 
 .btn {

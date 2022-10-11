@@ -84,10 +84,12 @@ const getByID = async (id) => {
 };
 
 const getFiltered = async (body) => {
-  const { order, type, local, descent } = body;
+  const { order, type, origin, descent } = body;
   var all = await getAll();
-  if (local) {
-    all = await data.pokemonsLocal;
+  if (origin === "local") {
+    all = data.pokemonsLocal;
+  } else if (origin === "api") {
+    all = data.pokemonsAPI;
   }
   if (type) {
     all = await getTypes.getByNameType(all, type);
@@ -95,14 +97,15 @@ const getFiltered = async (body) => {
   if (order) {
     all = await getSort(all, order);
   }
-  if (descent) {
-    all = await all.reverse();
+  if (descent === "true") {
+    all = all.reverse();
   }
   return all;
 };
 
 module.exports = {
   getAll,
+
   getAllSort,
   getSort,
   getByName,

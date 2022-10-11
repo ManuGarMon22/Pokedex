@@ -1,26 +1,23 @@
 import * as acitons from "../actions";
 
 const initialState = {
-  pokemons: {},
-  types: {},
-  created: [],
+  pokemons: [],
+  types: [],
   searched: {},
-  byType: {},
 };
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case acitons.CREATE_POKEMON:
+      if (action.payload.pokemon) {
+        return {
+          ...state,
+          pokemons: [...state.pokemons, action.payload.pokemon],
+        };
+      } else {
+        return state;
+      }
     case acitons.GET_POKEMONS:
-      return {
-        ...state,
-        pokemons: action.payload,
-      };
-    case acitons.GET_ORDER_NAME:
-      return {
-        ...state,
-        pokemons: action.payload,
-      };
-    case acitons.GET_ORDER_TYPE:
       return {
         ...state,
         pokemons: action.payload,
@@ -28,24 +25,27 @@ const rootReducer = (state = initialState, action) => {
     case acitons.GET_TYPES:
       return {
         ...state,
-        types: action.payload,
+        types: [...action.payload],
       };
-    case acitons.CREATE_POKEMON:
-      return {
-        ...state,
-        created: [...state.created, action.payload],
-      };
+
     case acitons.GET_BY_NAME:
       return {
         ...state,
         searched: action.payload,
       };
-    case acitons.GET_BY_TYPE:
+    case acitons.GET_BY_ID:
       return {
         ...state,
-        byType: action.payload,
+        searched: action.payload,
+      };
+    case acitons.FILTER:
+      return {
+        ...state,
+        pokemons: action.payload,
       };
     default:
       return state;
   }
 };
+
+export default rootReducer;

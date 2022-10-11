@@ -6,19 +6,20 @@ const createPo = require("../controllers/CreatePokemon");
 const pokemons = Router();
 
 pokemons.get("/", async (req, res) => {
-  const { order, type, local, descent } = req.body;
-
-  if (order || type || local || descent) {
+  const { order, type, origin, descent } = req.query;
+  const recibido = {
+    order: order || null,
+    type: type || null,
+    origin: origin || null,
+    descent: descent || null,
+  };
+  if (order || type || origin || descent) {
     try {
-      var filt = await getsPokemons.getFiltered({
-        order,
-        type,
-        local,
-        descent,
-      });
+      var filt = await getsPokemons.getFiltered(recibido);
       res.status(200).send(filt);
     } catch (error) {
-      res.status(400).send("query not valid");
+      console.log(error);
+      res.status(400).send(error);
     }
   } else if (req.query.name) {
     try {
@@ -56,7 +57,7 @@ pokemons.post("/", async (req, res) => {
       const r = await createPo.createPokemon(req.body);
       res.status(200).send({
         msg: "pokemon creado con exito",
-        ...r,
+        pokemon: r,
       });
     }
   } catch (error) {

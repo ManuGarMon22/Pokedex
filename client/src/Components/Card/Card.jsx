@@ -11,22 +11,32 @@ const Card = ({ name, type, image, id }) => {
     }
   };
 
+  function text(types) {
+    var text = types[0];
+    let i = 1;
+    while (i < types.lenght) {
+      text = text + "/" + types[i];
+      i++;
+    }
+    return text;
+  }
+
   return (
     <div className={style.background}>
       <div className={style.min}>
         <img src={image} alt="miniature" className={style.image} />
       </div>
       <div className={style.info}>
-        <a>
+        <span>
           Name:
           <br />
           {name}
-        </a>
-        <a>
+        </span>
+        <span>
           Type:
           <br />
-          {type}
-        </a>
+          {text(type)}
+        </span>
       </div>
     </div>
   );

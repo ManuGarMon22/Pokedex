@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "Retro";
+  src: url(../../extras/Retro\ Gaming.ttf);
+}
+
+.back {
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  background: linear-gradient(0deg, grey, white);
+  justify-content: center;
+  padding: 0%;
+  margin: 0%;
+  width: 100%;
+  min-height: 84.5%;
+}
+
+.title {
+  display: flex;
+  font-family: "Retro";
+  margin: 0;
+  padding: 0;
+  font-size: 40px;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+}
+
+.formulario {
+  display: grid;
+  font-family: "Retro";
+  /* grid-template-rows: 1fr, 30px; */
+
+  justify-content: center;
+  /* height: 100%; */
+}
+
+.ingresos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.datos {
+  display: grid;
+  margin: 10px;
+}
+.tipos {
+  margin: 10px;
+  display: grid;
+  grid-template-rows: 1fr 7fr;
+  font-family: "Retro";
+}
+
+.tiposDatos {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr;
+}
+.btn {
+  display: flex;
+  font-family: "Retro";
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+}
