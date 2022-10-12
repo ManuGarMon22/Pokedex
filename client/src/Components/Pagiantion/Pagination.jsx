@@ -1,24 +1,27 @@
-import { Link } from "react-router-dom";
-import Card from "../Card/Card.jsx";
-import { useSelector } from "react-redux";
-import { useState } from "react";
 
-const Pagination = (props) => {
+import style from "./Pagination.module.css";
+
+
+const Pagination = ({ perPage, total, paginate }) => {
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(total / perPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
-    <div>
-      <ul>
-        {props.poke?.map((e) => (
-          <li>
-            <Link to={`pokemon/${e.id}`} key={e.id}>
-              <Card name={e.name} type={e.types} image={e.image} id={e.id} />
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <button onClick={props.prevF}>prev</button>
-      <span>page {props.current + 1}</span>
-      <button onClick={props.nextF}>next</button>
+    <div className={style.back}>
+      {pageNumbers.map((number) => (
+        <button
+          className={style.btn}
+          key={number}
+          onClick={() => {
+            paginate(number);
+          }}
+        >
+          {number}
+        </button>
+      ))}
     </div>
   );
 };

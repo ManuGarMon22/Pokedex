@@ -5,7 +5,7 @@
 
 .back {
   display: grid;
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 60px 20px 1fr 20px;
   background: linear-gradient(0deg, grey, white);
   justify-content: center;
   padding: 0%;
@@ -54,10 +54,39 @@
   display: grid;
   grid-template-columns: 0.5fr 0.5fr;
 }
-.btn {
+
+.btnSpace {
   display: flex;
-  font-family: "Retro";
   justify-content: center;
+  align-items: center;
+}
+
+.required {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 20px;
+  font-family: "Retro";
+  size: 15px;
+}
+
+.requiredL {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 20px;
+  font-family: "Retro";
+  size: 15px;
+}
+.visible {
+  color: red;
+}
+
+.invisible {
+  visibility: hidden;
+}
+.btn {
+  font-family: "Retro";
   width: 100px;
   height: 40px;
 }

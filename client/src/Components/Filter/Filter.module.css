@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Retro";
+  src: url(../../extras/Retro\ Gaming.ttf);
+}
+
+.back {
+  display: grid;
+  font-family: "Retro";
+  font-size: 15px;
+  padding: 5px;
+
+  padding-top: 0;
+  margin: 0;
+}
+
+.fil {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+select {
+  font-family: "Retro";
+  font-size: 12px;
+}
+option {
+  font-family: "Retro";
+  font-size: 12px;
+}
+
+.btn {
+  font-family: "Retro";
+  font-size: 12px;
+}

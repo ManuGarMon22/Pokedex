@@ -29,14 +29,20 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case acitons.GET_BY_NAME:
+      if (Array.isArray(action.payload)) {
+        return {
+          ...state,
+          pokemons: [...action.payload],
+        };
+      }
       return {
         ...state,
-        searched: action.payload,
+        pokemons: [action.payload],
       };
     case acitons.GET_BY_ID:
       return {
         ...state,
-        searched: action.payload,
+        pokemons: [action.payload],
       };
     case acitons.FILTER:
       return {

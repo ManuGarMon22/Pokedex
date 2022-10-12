@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Retro";
+  src: url(../../extras/Retro\ Gaming.ttf);
+}
+
+.back {
+  background: linear-gradient(180deg, rgb(150, 149, 149), white);
+
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  padding: 10px;
+}
+
+.inData {
+  font-family: "Retro";
+
+  width: 300px;
+}
+
+.btn {
+  background: linear-gradient(0deg, rgb(73, 23, 23), rgb(214, 0, 0));
+
+  font-family: "Retro";
+}

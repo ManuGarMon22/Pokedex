@@ -1,7 +1,7 @@
-import { useDispatch, useSelector, connect } from "react-redux";
+import style from "./Filter.module.css";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getOrder, getPokemons, getTypes } from "../../Redux/actions";
-import { Component } from "react";
+import { getOrder, getTypes } from "../../Redux/actions";
 
 const Filter = () => {
   const [filtros, setFiltros] = useState({
@@ -22,7 +22,7 @@ const Filter = () => {
     if (e.target.name === "descent") {
       setFiltros({
         ...filtros,
-        descent: !filtros.decent,
+        descent: !e.target.value,
       });
     } else {
       setFiltros({
@@ -38,43 +38,54 @@ const Filter = () => {
   }
 
   return (
-    <div>
-      <p>Filtros:</p>
-      <label htmlFor="order">Choose type: </label>
-      <select name="order" onChange={handleOnChange} value={filtros.order}>
-        <option value="null">Select a property</option>
-        <option value="name">Name</option>
-        <option value="attack">attack</option>
-        <option value="primero">life</option>
-      </select>
-
-      <label htmlFor="type">Choose type: </label>
-      <select name="type" onChange={handleOnChange} value={filtros.type}>
-        <option value="null">Select a type</option>
-        {types?.map((element) => (
-          <option value={element.name} key={element.id}>
-            {element.name}
-          </option>
-        ))}
-      </select>
-
-      <label htmlFor="origin">Choose Origin: </label>
-      <select name="origin" onChange={handleOnChange} value={filtros.origin}>
-        <option value="null">All</option>
-        <option value="local">Created</option>
-        <option value="api">Existed</option>
-      </select>
-
-      <label htmlFor="descent">Descendent?</label>
-
-      <input
-        type="checkbox"
-        value={filtros.decent}
-        name="descent"
-        onChange={handleOnChange}
-      />
-
-      <button onClick={fill}>Apply</button>
+    <div className={style.back}>
+      <div className={style.fil}>
+        <p>Filters:</p>
+        <span>
+          <label htmlFor="order">Choose type: </label>
+          <select name="order" onChange={handleOnChange} value={filtros.order}>
+            <option value="null">Select a property</option>
+            <option value="name">Name</option>
+            <option value="attack">attack</option>
+            <option value="life">life</option>
+          </select>
+        </span>
+        <span>
+          <label htmlFor="type">Choose type: </label>
+          <select name="type" onChange={handleOnChange} value={filtros.type}>
+            <option value="null">Select a type</option>
+            {types?.map((element) => (
+              <option value={element.name} key={element.id}>
+                {element.name}
+              </option>
+            ))}
+          </select>
+        </span>
+        <span>
+          <label htmlFor="origin">Choose Origin: </label>
+          <select
+            name="origin"
+            onChange={handleOnChange}
+            value={filtros.origin}
+          >
+            <option value="null">All</option>
+            <option value="local">Created</option>
+            <option value="api">Existed</option>
+          </select>
+        </span>
+        <span>
+          <label htmlFor="descent">Descendent?</label>
+          <input
+            type="checkbox"
+            value={filtros.decent}
+            name="descent"
+            onChange={handleOnChange}
+          />
+        </span>
+        <button className={style.btn} onClick={fill}>
+          Apply
+        </button>
+      </div>
     </div>
   );
 };

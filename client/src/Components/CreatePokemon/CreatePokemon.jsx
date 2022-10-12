@@ -1,6 +1,5 @@
 import style from "./CreatePokemon.module.css";
 import { useEffect, useState } from "react";
-import * as actions from "../../Redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { createPokemon, getTypes } from "../../Redux/actions";
 
@@ -17,6 +16,7 @@ const CreatePokemon = () => {
     types: [],
   });
 
+  const [required, setRequired] = useState(false);
   const dispatch = useDispatch();
 
   const types = useSelector((state) => state.types);
@@ -26,7 +26,6 @@ const CreatePokemon = () => {
   }, []);
 
   const handleOnchange = (e) => {
-    console.log(poke.types);
     if (e.target.name === "type") {
       const validar = poke.types.indexOf(e.target.value);
       if (validar === -1) {
@@ -55,22 +54,25 @@ const CreatePokemon = () => {
 
   const create = (e) => {
     e.preventDefault();
-    if (poke.name !== "" && poke.types.lenght > 0) {
+    if (poke.name !== "" && types.length > 0) {
       dispatch(createPokemon(poke));
     } else {
-      alert(
-        "No se puede crear un pokemon sin nombre ni tipos\n Por favor llener los campos necesarios"
-      );
+      setRequired(true);
     }
   };
 
   return (
     <div className={style.back}>
       <h2 className={style.title}>Creating a Pokemon!</h2>
+      <div className={style.required}>* (required)</div>
+
       <form action="" onSubmit={create} className={style.formulario}>
         <div className={style.ingresos}>
           <div className={style.datos}>
-            <label>Name:* </label>
+            <label className={required ? style.visible : style.invisible}>
+              name is required
+            </label>
+            <label>*Name: </label>
             <input
               type="text"
               name="name"
@@ -128,7 +130,13 @@ const CreatePokemon = () => {
             />
           </div>
           <div className={style.tipos}>
-            <label>Select types for pokemon:*</label>
+            <span>
+              <label className={required ? style.visible : style.invisible}>
+                required to select a type
+              </label>
+              <br></br>
+              <label>*Select types for pokemon:</label>
+            </span>
             <div className={style.tiposDatos}>
               {types?.map((e) => (
                 <span key={e.id}>
@@ -144,7 +152,10 @@ const CreatePokemon = () => {
             </div>
           </div>
         </div>
-        <button className={style.btn}>Create</button>
+        <div className={style.btnSpace}>
+          <br />
+          <button className={style.btn}>Create</button>
+        </div>
       </form>
     </div>
   );

@@ -1,20 +1,10 @@
 import style from "./Card.module.css";
 
 const Card = ({ name, type, image, id }) => {
-  const idText = () => {
-    if (id > 99) {
-      return id;
-    } else if (id > 9) {
-      return "0" + id;
-    } else {
-      return "00" + id;
-    }
-  };
-
   function text(types) {
     var text = types[0];
     let i = 1;
-    while (i < types.lenght) {
+    while (i < types.length) {
       text = text + "/" + types[i];
       i++;
     }
@@ -24,7 +14,15 @@ const Card = ({ name, type, image, id }) => {
   return (
     <div className={style.background}>
       <div className={style.min}>
-        <img src={image} alt="miniature" className={style.image} />
+        <img
+          src={
+            image
+              ? image
+              : "https://images.wikidexcdn.net/mwuploads/wikidex/thumb/f/fa/latest/20220604130249/Unown_%3F_HOME.png/120px-Unown_%3F_HOME.png"
+          }
+          alt="miniature"
+          className={style.image}
+        />
       </div>
       <div className={style.info}>
         <span>

@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Retro";
+  src: url(../../extras/Retro\ Gaming.ttf);
+}
+
+.back {
+  display: flex;
+  justify-content: center;
+  margin: 0%;
+  padding: 10px;
+}
+.btn {
+  font-family: "Retro";
+}

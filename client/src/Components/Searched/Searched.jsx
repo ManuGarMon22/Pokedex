@@ -1,8 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import style from "./Searched.module.css";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { getByName } from "../../Redux/actions";
+
 // ejemplo de datos para los filtros
-// { order: "name", type: "grass", local: true, descent: false }
+// { order: "name", type: "grass", origin: local/api, descent: false/true }
 const Searched = () => {
   const dispatch = useDispatch();
 
@@ -10,8 +12,9 @@ const Searched = () => {
 
   const search = (e) => {
     e.preventDefault();
-
-    dispatch(getByName(bus));
+    if (bus !== "") {
+      dispatch(getByName(bus));
+    }
   };
 
   function handleOnChange(e) {
@@ -19,17 +22,16 @@ const Searched = () => {
   }
 
   return (
-    <div>
-      <div>Result</div>
-
+    <div className={style.back}>
       <form action="" onSubmit={search}>
         <input
+          className={style.inData}
           type="text"
           placeholder="Pokemon name"
           onChange={handleOnChange}
           value={bus}
         />
-        <button>Search</button>
+        <button className={style.btn}>Search</button>
       </form>
     </div>
   );

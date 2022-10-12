@@ -39,23 +39,13 @@ export const getTypes = () => {
   };
 };
 
-export const getByID = (id) => {
-  return (dispatch) => {
-    return axios
-      .get(`http://localhost:3001/pokemons/${id}`)
-      .then((json) => json.data)
-      .then((f) => dispatch({ type: GET_BY_ID, payload: f }))
-      .catch((error) => alert("error con la peticion al backend" + error));
-  };
-};
-
 export const getByName = (name) => {
   return (dispatch) => {
     return axios
       .get(`http://localhost:3001/pokemons?name=${name}`)
       .then((json) => json.data)
       .then((f) => dispatch({ type: GET_BY_NAME, payload: f }))
-      .catch((error) => alert("error con la peticion al backend" + error));
+      .catch((error) => alert("Pokemon no encontrado"));
   };
 };
 
@@ -65,7 +55,6 @@ export const getOrder = (filtros) => {
       .get(`http://localhost:3001/pokemons${depende(filtros)}`)
       .then((json) => json.data)
       .then((f) => {
-        console.log(f);
         dispatch({ type: FILTER, payload: f });
       })
       .catch((error) => alert("error con la peticion al backend"));

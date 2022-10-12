@@ -1,5 +1,4 @@
 import "./App.css";
-
 import { Route, Switch } from "react-router-dom";
 import Landing from "./Components/Landing/Landing.jsx";
 import CardsContainer from "./Components/CardsContainer/CardsContainer.jsx";
@@ -20,24 +19,21 @@ function App() {
           <NavBar />
           <Searched />
           <Filter />
-          <h1>Inicio</h1>
           <CardsContainer />
-        </Route>
-        <Route path="/search/:name">
-          <NavBar />
-          <Searched />
-          <h1>Busqueda:</h1>
-          {/* <CardsContainer /> */}
         </Route>
         <Route path="/create">
           <NavBar />
           <CreatePokemon />
         </Route>
-        <Route path="/pokemon/:id">
-          <NavBar />
-          <h1>Detalles del Pokemon {}</h1>
-          {/* <DetailedCard /> */}
-        </Route>
+        <Route
+          path="/pokemon/:id"
+          render={({ match }) => (
+            <div>
+              <NavBar />
+              <DetailedCard id={match.params.id} />
+            </div>
+          )}
+        ></Route>
       </Switch>
     </div>
   );

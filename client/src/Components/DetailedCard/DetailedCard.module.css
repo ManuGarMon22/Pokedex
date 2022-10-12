@@ -1,0 +1,72 @@
+@font-face {
+  font-family: "Retro";
+  src: url(../../extras/Retro\ Gaming.ttf);
+}
+
+.back {
+  background: linear-gradient(0deg, grey, white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 561px;
+}
+
+.normal {
+  background: radial-gradient(circle, rgb(54, 22, 22), rgb(214, 0, 0));
+  /* radial-gradient(ellipse at bottom, rgb(214, 0, 0), transparent); */
+}
+
+.fondo {
+  margin-top: 7px;
+  display: grid;
+
+  background: url(https://thumbs.dreamstime.com/b/fondo-gris-del-camuflaje-pixel-113945150.jpg);
+  background-repeat: repeat;
+  background-size: contain;
+
+  grid-template-rows: 30px 150px 1fr;
+  justify-content: center;
+  font-family: "Retro";
+  color: black;
+  padding: 5px;
+  width: 220px;
+  height: 410px;
+}
+
+.id {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.backImg {
+  background-color: rgba(0, 0, 0, 0.5);
+
+  opacity: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  display: flex;
+  width: 150px;
+  height: 150px;
+  justify-content: center;
+
+  /* align-items: center; */
+}
+
+.datos {
+  display: grid;
+  justify-content: left;
+  align-items: center;
+  padding: 0px;
+  margin-top: 7px;
+}
+
+span {
+  padding: 3px;
+}

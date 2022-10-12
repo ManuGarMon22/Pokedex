@@ -11,9 +11,13 @@ const NavBar = () => {
           alt="Logo"
         />
       </Link>
-      <div className={style.helpers}>
-        <Link to="/home">Home</Link>
-        <Link to="/create">Create</Link>
+      <div className={style.btn}>
+        <Link className={style.helpers} to="/home">
+          Home
+        </Link>
+        <Link className={style.helpers} to="/create">
+          Create
+        </Link>
       </div>
     </nav>
   );

@@ -20,9 +20,19 @@ nav {
   margin: 0px;
 }
 
-.helpers {
+.btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.helpers {
   margin: 0px;
   padding: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.helpers:hover {
+  text-decoration: none;
+  font-size: 17px;
 }
