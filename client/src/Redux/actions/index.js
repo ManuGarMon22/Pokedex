@@ -15,7 +15,7 @@ export const getPokemons = () => {
       .then((f) => {
         dispatch({ type: GET_POKEMONS, payload: f });
       })
-      .catch((error) => alert("error con la api" + error));
+      .catch((error) => alert("Error al traer los pokemones"));
   };
 };
 
@@ -25,7 +25,7 @@ export const createPokemon = (pokemon) => {
       .post("http://localhost:3001/pokemons", pokemon)
       .then((json) => json.data)
       .then((f) => dispatch({ type: CREATE_POKEMON, payload: f }))
-      .catch((error) => alert("error con la peticion al backend" + error));
+      .catch((error) => alert("No se pudo crear el pokemon"));
   };
 };
 
@@ -35,7 +35,7 @@ export const getTypes = () => {
       .get("http://localhost:3001/types")
       .then((json) => json.data)
       .then((f) => dispatch({ type: GET_TYPES, payload: f }))
-      .catch((error) => alert("error con la peticion al backend" + error));
+      .catch((error) => alert("Error al traer los tipos de los Pokemones"));
   };
 };
 
@@ -57,7 +57,7 @@ export const getOrder = (filtros) => {
       .then((f) => {
         dispatch({ type: FILTER, payload: f });
       })
-      .catch((error) => alert("error con la peticion al backend"));
+      .catch((error) => alert("No se filtro de manera correcta"));
   };
 };
 

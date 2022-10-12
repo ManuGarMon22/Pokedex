@@ -28,6 +28,7 @@ const Searched = () => {
           className={style.inData}
           type="text"
           placeholder="Pokemon name"
+          spellcheck="false"
           onChange={handleOnChange}
           value={bus}
         />

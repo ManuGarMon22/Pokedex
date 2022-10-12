@@ -61,7 +61,9 @@ const DetailedCard = ({ id }) => {
       </div>
     </div>
   ) : (
-    <div>Detalles del pokemon no encontrados</div>
+    <div className={style.back}>
+      <div>Detalles del pokemon no encontrados</div>
+    </div>
   );
 };
 

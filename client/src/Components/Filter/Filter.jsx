@@ -8,7 +8,7 @@ const Filter = () => {
     order: "",
     type: "",
     origin: "",
-    decent: false,
+    descent: false,
   });
 
   const dispatch = useDispatch();
@@ -19,10 +19,11 @@ const Filter = () => {
   var types = useSelector((state) => state.types);
 
   function handleOnChange(e) {
+    console.log(filtros.descent);
     if (e.target.name === "descent") {
       setFiltros({
         ...filtros,
-        descent: !e.target.value,
+        descent: !filtros.descent,
       });
     } else {
       setFiltros({
@@ -77,7 +78,7 @@ const Filter = () => {
           <label htmlFor="descent">Descendent?</label>
           <input
             type="checkbox"
-            value={filtros.decent}
+            value={filtros.descent}
             name="descent"
             onChange={handleOnChange}
           />
