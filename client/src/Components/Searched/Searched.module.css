@@ -14,12 +14,15 @@
 
 .inData {
   font-family: "Retro";
-
   width: 300px;
+  border-radius: 5px;
+  padding: 3px;
 }
 
 .btn {
   background: linear-gradient(0deg, rgb(73, 23, 23), rgb(214, 0, 0));
-
   font-family: "Retro";
+  color: white;
+  border-radius: 5px;
+  padding: 3px;
 }

@@ -14,7 +14,7 @@ const Filter = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTypes());
-  }, []);
+  }, [dispatch]);
 
   var types = useSelector((state) => state.types);
 

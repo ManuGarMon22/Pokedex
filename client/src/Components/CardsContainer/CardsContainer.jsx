@@ -15,7 +15,7 @@ const CardsContainer = () => {
   useEffect(() => {
     dispatch(getPokemons());
     setPage(1);
-  }, []);
+  }, [dispatch]);
 
   const lastIndexCard = page * dataPerPage;
   const firstIndexCard = lastIndexCard - dataPerPage;
@@ -23,25 +23,25 @@ const CardsContainer = () => {
 
   const paginate = (pageNumber) => setPage(pageNumber);
 
-  return (
+  return toView.length > 0 ? (
     <div className={style.background}>
       <h2>Pokemons:</h2>
-      {toView ? (
-        <div className={style.data}>
-          {toView?.map((e) => (
-            <Link key={e.id} to={`/pokemon/${e.id}`} className={style.card}>
-              <Card name={e.name} type={e.types} image={e.image} id={e.id} />
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <div>Sin resultados</div>
-      )}
+      <div className={style.data}>
+        {toView.map((e) => (
+          <Link key={e.id} to={`/pokemon/${e.id}`} className={style.card}>
+            <Card name={e.name} type={e.types} image={e.image} id={e.id} />
+          </Link>
+        ))}
+      </div>
       <Pagination
         perPage={dataPerPage}
         total={pokemons.length}
         paginate={paginate}
       />
+    </div>
+  ) : (
+    <div className={style.inutil}>
+      <h2>Sin resultados</h2>
     </div>
   );
 };

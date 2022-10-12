@@ -25,6 +25,7 @@ export const createPokemon = (pokemon) => {
       .post("http://localhost:3001/pokemons", pokemon)
       .then((json) => json.data)
       .then((f) => dispatch({ type: CREATE_POKEMON, payload: f }))
+      .then(() => alert("Pokemon creado con exito"))
       .catch((error) => alert("No se pudo crear el pokemon"));
   };
 };

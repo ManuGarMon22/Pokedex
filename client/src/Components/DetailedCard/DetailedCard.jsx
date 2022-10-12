@@ -9,7 +9,7 @@ const DetailedCard = ({ id }) => {
       .get(`http://localhost:3001/pokemons/${id}`)
       .then((json) => json.data)
       .then((poke) => setPoke(poke));
-  }, []);
+  }, [id]);
 
   const idText = (id) => {
     if (id > 99) {

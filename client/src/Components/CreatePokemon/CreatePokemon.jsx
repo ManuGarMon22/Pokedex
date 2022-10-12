@@ -6,12 +6,12 @@ import { createPokemon, getTypes } from "../../Redux/actions";
 const CreatePokemon = () => {
   const [poke, setPoke] = new useState({
     name: "",
-    height: 0,
-    weight: 0,
-    life: 0,
-    attack: 0,
-    defense: 0,
-    speed: 0,
+    height: "",
+    weight: "",
+    life: "",
+    attack: "",
+    defense: "",
+    speed: "",
     image: "",
     types: [],
   });
@@ -23,7 +23,7 @@ const CreatePokemon = () => {
 
   useEffect(() => {
     dispatch(getTypes());
-  }, []);
+  }, [dispatch]);
 
   const handleOnchange = (e) => {
     if (e.target.name === "type") {
@@ -53,10 +53,21 @@ const CreatePokemon = () => {
   };
 
   const create = (e) => {
-    e.preventDefault();
     if (poke.name !== "" && types.length > 0) {
       dispatch(createPokemon(poke));
+      setPoke({
+        name: "",
+        height: 0,
+        weight: 0,
+        life: 0,
+        attack: 0,
+        defense: 0,
+        speed: 0,
+        image: "",
+        types: [],
+      });
     } else {
+      e.preventDefault();
       setRequired(true);
     }
   };
@@ -76,6 +87,7 @@ const CreatePokemon = () => {
             <input
               type="text"
               name="name"
+              placeholder="example_name"
               onChange={handleOnchange}
               value={poke.name}
             />
@@ -83,6 +95,8 @@ const CreatePokemon = () => {
             <input
               type="number"
               name="height"
+              min="1"
+              placeholder="height"
               onChange={handleOnchange}
               value={poke.height}
             />
